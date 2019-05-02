@@ -1,0 +1,162 @@
+---
+title: Home page
+published: true
+---
+{% extends layouts/default %}
+{% block 'main' %}
+<body class="theme-page">
+  <div class="switcher select"></div>
+  <div class="columns">
+    <div class="column is-2">
+      <aside class="menu section">
+        <p class="menu-label"> Elements </p>
+        <ul class="menu-list">
+          <li>
+            <a href="#typography"> Typography </a>
+          </li>
+          <li>
+            <a href="#box"> Box </a>
+          </li>
+          <li>
+            <a href="#button"> Button </a>
+          </li>
+          <li>
+            <a href="#content"> Content </a>
+          </li>
+          <li>
+            <a href="#delete"> Delete </a>
+          </li>
+          <li>
+            <a href="#form"> Form </a>
+          </li>
+          <li>
+            <a href="#icon"> Icon </a>
+          </li>
+          <li>
+            <a href="#images"> Images </a>
+          </li>
+          <li>
+            <a href="#notifications"> Notifications </a>
+          </li>
+          <li>
+            <a href="#progress"> Progress bars </a>
+          </li>
+          <li>
+            <a href="#table"> Table </a>
+          </li>
+          <li>
+            <a href="#tag"> Tag </a>
+          </li>
+        </ul>
+        <p class="menu-label"> Components </p>
+        <ul class="menu-list">
+          <li>
+            <a href="#breadcrumb"> Breadcrumb </a>
+          </li>
+          <li>
+            <a href="#dropdown"> Dropdown </a>
+          </li>
+          <li>
+            <a href="#card"> Card </a>
+          </li>
+          <li>
+            <a href="#hero"> Hero </a>
+          </li>
+          <li>
+            <a href="#level"> Level </a>
+          </li>
+          <li>
+            <a href="#media"> Media object </a>
+          </li>
+          <li>
+            <a href="#menu"> Menu </a>
+          </li>
+          <li>
+            <a href="#message"> Message </a>
+          </li>
+          <li>
+            <a href="#modal"> Modal </a>
+          </li>
+          <li>
+            <a href="#navbar"> Navbar </a>
+          </li>
+          <li>
+            <a href="#pagination"> Pagination </a>
+          </li>
+          <li>
+            <a href="#panel"> Panel </a>
+          </li>
+          <li>
+            <a href="#tabs"> Tabs </a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    <div class="column">
+      {% include typography %}
+      {% include box %}
+      {% include button %}
+      {% include content %}
+      {% include delete %}
+      {% include form %}
+      {% include icon %}
+      {% include images %}
+      {% include notifications %}
+      {% include progress %}
+      {% include table %}
+      {% include tag %}
+      {% include breadcrumb %}
+      {% include hero %}
+      {% include card %}
+      {% include dropdown %}
+      {% include level %}
+      {% include media %}
+      {% include menu %}
+      {% include message %}
+      {% include modal %}
+      {% include navbar %}
+      {% include pagination %}
+      {% include panel %}
+      {% include tabs %}
+    </div>
+  </div>
+  {{ include content }}
+  {% include footer %}
+  <script type="text/javascript">
+    function switchTheme(t) {
+      var theme = t || 'default';
+      $('#stylesheet').attr('href', '../' + theme + '/bulmaswatch.min.css');
+      var title = theme.charAt(0).toUpperCase() + theme.substring(1);
+      window.history.replaceState(theme, title, '?' + theme);
+      $('.hero .title').text(title);
+      document.title = title;
+    }
+    $(function() {
+      $('.switcher select').change(function(e) {
+        switchTheme(e.target.value);
+      });
+      if (window.location.search) {
+        $('.switcher select').val(window.location.search.substring(1));
+        $('.switcher select').trigger('change');
+      }
+      $('.modal-background, .modal-close').click(function() {
+        $(this).parent().removeClass('is-active');
+      });
+
+      $('.nav-toggle').click(function() {
+        $(this).toggleClass('is-active');
+        $(this).siblings('.nav-menu').toggleClass('is-active');
+      });
+
+      $('.dropdown:not(.is-hoverable)').click(function(event) {
+        event.stopPropagation();
+        $(this).toggleClass('is-active');
+      });
+
+      $(document).click(function() {
+        $('.dropdown:not(.is-hoverable)').removeClass('is-active');
+      });
+    });
+  </script>
+</body>
+{% endblock %}
