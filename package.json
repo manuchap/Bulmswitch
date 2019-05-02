@@ -11,13 +11,15 @@
   },
   "author": "Wagon",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "babel-loader": "^8.0.5",
     "bulma": "^0.7.4",
+    "bulma-dashboard": "^0.1.40",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.3.0",
